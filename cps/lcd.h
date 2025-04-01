@@ -4,7 +4,6 @@
 #define LCD_ADDRESS 0x27
 
 LiquidCrystal_I2C lcd(LCD_ADDRESS, 16, 2);
-int displayState = 1;
 unsigned long lastPressTime = 0;
 const int debounceDelay = 200;
 

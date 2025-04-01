@@ -1,8 +1,6 @@
 #define ECHO_PIN 3
 #define TRIGGER_PIN 4
 
-int measureState = 0;
-
 unsigned long prevTrigger = millis();
 unsigned long triggerDelay = 60;
 

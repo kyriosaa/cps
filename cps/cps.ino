@@ -1,9 +1,9 @@
+#include "globals.h"
 #include "ultrasonic.h"
-#include "irremote.h"
 #include "lcd.h"
+#include "irremote.h"
 #include "button.h"
-
-bool lockState = false;
+#include "led.h"
 
 void setup() {
   Serial.begin(115200);
@@ -11,10 +11,16 @@ void setup() {
   ultrasonicSetup();
   irRemoteSetup();
   lcdSetup();
+  buttonSetup();
+  ledSetup();
 }
 
 void loop() {
   if(!lockState) {    // run device as normal if not locked
+    // LED -----------------------------------------------------------------------------
+    unlockedRed();
+    unlockedYellow();
+    // ---------------------------------------------------------------------------------
 
     // Ultrasonic Sensor ---------------------------------------------------------------
     unsigned long timeNow = millis();
@@ -41,32 +47,13 @@ void loop() {
       
       switch(command) {
         case IR_BUTTON_RIGHT:
-          if(millis() - lastPressTime > debounceDelay) {
-            lastPressTime = millis();
-            displayState = (displayState % 3) + 1;
-          }
+          irButtonRight();
           break;
         case IR_BUTTON_LEFT:
-          if(millis() - lastPressTime > debounceDelay) {
-            lastPressTime = millis();
-            displayState = (displayState == 1) ? 3 : displayState - 1;
-          }
+          irButtonLeft();
           break;
         case IR_BUTTON_STAR:
-          if(millis() - lastPressTime > debounceDelay) {
-            lastPressTime = millis();
-            if(displayState == 1) {           // if we are at ultrasonic screen, switch between cm and inches
-              if(measureState == 0) {
-                lcd.clear();
-                measureState = 1;
-              } else {
-                lcd.clear();
-                measureState = 0;
-              }
-            } else if(displayState == 2) {    // if we are at the reset screen, reset to cm
-              measureState = 0;
-            }
-          }
+          irButtonStar();
           break;
       }
     }
@@ -90,23 +77,17 @@ void loop() {
     // ---------------------------------------------------------------------------------
   }
 
-  } else {    // if locked, watch for the push button or the OK button on the remote to be pressed
+  } else {
+    // print lock message on LCD display
     printLock();
+    // blinks red LED when device is locked
+    lockedRed();
+    // syncs yellow LED blink rate to red LED
+    lockedYellow();
 
-    if(digitalRead(BUTTON_PIN) == HIGH) {
-      lcd.clear();
-      lockState = false;
-    }
-
-    if(IrReceiver.decode()) {
-      IrReceiver.resume();
-
-      int command = IrReceiver.decodedIRData.command;
-
-      if(command == IR_BUTTON_OK) {
-        lcd.clear();
-        lockState = false;
-      }
-    }
+    // unlocks device if push button activates
+    buttonUnlock();
+    // unlocks device if "OK" is pushed on the ir remote
+    irButtonOk();
   }
 }
