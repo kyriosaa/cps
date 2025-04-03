@@ -5,6 +5,8 @@
 #define RED_DELAY 300
 
 // Red LED -------------------------------------------------------
+
+// when device is unlocked, turn off red LED
 void unlockedRed() {
   if(redLedState) {
     redLedState = false;
@@ -12,6 +14,7 @@ void unlockedRed() {
   }
 }
 
+// when device is locked, blink red LED every 300ms
 void lockedRed() {
   static unsigned long lastToggleTime = 0;
 
@@ -21,9 +24,12 @@ void lockedRed() {
     digitalWrite(RED_LED, redLedState);
   }
 }
+
 // ---------------------------------------------------------------
 
 // Yellow LED ----------------------------------------------------
+
+// when device is unlocked, blink yellow LED according to the distance value
 void unlockedYellow() {
   static unsigned long lastToggleTime = 0;
   int yellowDelay = (getUltrasonicDistance() + 30);
@@ -35,10 +41,11 @@ void unlockedYellow() {
   }
 }
 
+// when device is locked, sync blink rate with red LED
 void lockedYellow() {
   static unsigned long lastToggleTime = 0;
 
-  if(millis() - lastToggleTime >= RED_DELAY) {  // sync blink time with red LED
+  if(millis() - lastToggleTime >= RED_DELAY) {  // sync blink rate with red LED
     lastToggleTime = millis();
     yellowLedState = !yellowLedState;
     digitalWrite(YELLOW_LED, yellowLedState);
@@ -47,6 +54,8 @@ void lockedYellow() {
 // ---------------------------------------------------------------
 
 // White LED -----------------------------------------------------
+
+// when device is unlocked, set brightness value of white LED to the photoresistor value
 void unlockedWhite() {
   int photoresistorValue = getLuminosity();
   int whiteBrightness = photoresistorValue / 2;
@@ -54,6 +63,7 @@ void unlockedWhite() {
   analogWrite(WHITE_LED, whiteBrightness);
 }
 
+// when device is locked, turn off white LED (no state needed since white LED's function is analog)
 void lockedWhite() {
   digitalWrite(WHITE_LED, LOW);
 }

@@ -3,6 +3,7 @@
 unsigned long prevMeasure = millis();
 unsigned long measureDelay = 100;
 
+// records luminosity value every 100ms
 int getLuminosity() {
   static unsigned long prevMeasure = 0;
   const unsigned long measureDelay = 100;
@@ -10,7 +11,7 @@ int getLuminosity() {
 
   if (millis() - prevMeasure >= measureDelay) {
     prevMeasure = millis();
-    luminosityValue = analogRead(PHOTORESISTOR_PIN) - 140;
+    luminosityValue = analogRead(PHOTORESISTOR_PIN) - 140;    // -140 to keep value within 250 since LED values go to 255
     if (luminosityValue < 0) {
       luminosityValue = 0;
     }

@@ -8,6 +8,7 @@ volatile unsigned long pulseInBegin;
 volatile unsigned long pulseInEnd;
 volatile bool newDistanceAvailable = false;
 
+// use interrupts to measure ultrasonic distance
 void echoPinInterrupt() {
   if(digitalRead(ECHO_PIN) == HIGH) {
     // rising - start measuring
@@ -19,6 +20,7 @@ void echoPinInterrupt() {
   }
 }
 
+// handles turning on/off the ultrasonic sensor's trigger pin
 void triggerUltrasonicSensor() {
   digitalWrite(TRIGGER_PIN, LOW);
   delayMicroseconds(2);
@@ -27,6 +29,7 @@ void triggerUltrasonicSensor() {
   digitalWrite(TRIGGER_PIN, LOW);
 }
 
+// handles calculation of the final distance value
 double getUltrasonicDistance() {
   double durationMicros = pulseInEnd - pulseInBegin;
   if(measureState == 0) {
@@ -54,6 +57,7 @@ void ultrasonicLoop() {
     newDistanceAvailable = false;
     double distance = getUltrasonicDistance();
     
+    // locks device when distance <=10
     if(distance <= 10) {
       lockState = true;
     }

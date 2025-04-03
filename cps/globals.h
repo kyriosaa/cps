@@ -1,3 +1,4 @@
+// global variables
 bool lockState = false;
 int displayState = 1;
 int measureState = 0;

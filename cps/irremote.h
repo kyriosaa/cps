@@ -7,8 +7,10 @@
 #define IR_BUTTON_RIGHT 90
 #define IR_BUTTON_OK    28
 #define IR_BUTTON_STAR  22
-#define IR_BUTTON_HASH  13
+#define IR_BUTTON_HASH  13  // for buzzer use later (WIP)
 
+// IR remote right button press
+// increases displayState by 1 (out of 3)
 void irButtonRight() {
   if(millis() - lastPressTime > debounceDelay) {
     lastPressTime = millis();
@@ -17,6 +19,8 @@ void irButtonRight() {
   }
 }
 
+// IR remote left button press
+// decreases displayState by 1 (out of 3)
 void irButtonLeft() {
   if(millis() - lastPressTime > debounceDelay) {
     lastPressTime = millis();
@@ -25,6 +29,8 @@ void irButtonLeft() {
   }
 }
 
+// IR remote star button press
+// handles the switching between cm/in in distance calculation
 void irButtonStar() {
   if(millis() - lastPressTime > debounceDelay) {
     lastPressTime = millis();
@@ -32,11 +38,11 @@ void irButtonStar() {
       if(measureState == 0) {
         lcd.clear();
         measureState = 1;
-        EEPROM.write(EEPROM_ADDRESS, measureState);
+        EEPROM.write(EEPROM_ADDRESS, measureState);     // record measureState to EEPROM
       } else {
         lcd.clear();
         measureState = 0;
-        EEPROM.write(EEPROM_ADDRESS, measureState);
+        EEPROM.write(EEPROM_ADDRESS, measureState);     // record measureState to EEPROM
       }
     } else if(displayState == 2) {    // if we are at the reset screen, reset to cm
       measureState = 0;
@@ -44,6 +50,8 @@ void irButtonStar() {
   }
 }
 
+// IR remote OK button press
+// unlocks the device when locked
 void irButtonOk() {
   if(IrReceiver.decode()) {
     IrReceiver.resume();
