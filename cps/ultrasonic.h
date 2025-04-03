@@ -6,7 +6,7 @@ unsigned long triggerDelay = 60;
 
 volatile unsigned long pulseInBegin;
 volatile unsigned long pulseInEnd;
-volatile bool newDistanceAvaliable = false;
+volatile bool newDistanceAvailable = false;
 
 void echoPinInterrupt() {
   if(digitalRead(ECHO_PIN) == HIGH) {
@@ -15,7 +15,7 @@ void echoPinInterrupt() {
   } else {
     // falling - stop measuring
     pulseInEnd = micros();
-    newDistanceAvaliable = true;
+    newDistanceAvailable = true;
   }
 }
 
@@ -42,4 +42,20 @@ void ultrasonicSetup() {
   pinMode(ECHO_PIN, INPUT);
   pinMode(TRIGGER_PIN, OUTPUT);
   attachInterrupt(digitalPinToInterrupt(ECHO_PIN), echoPinInterrupt, CHANGE);
+}
+
+void ultrasonicLoop() {
+  unsigned long timeNow = millis();
+  if(timeNow - prevTrigger > triggerDelay) {
+    prevTrigger += triggerDelay;
+    triggerUltrasonicSensor();
+  }
+  if(newDistanceAvailable) {
+    newDistanceAvailable = false;
+    double distance = getUltrasonicDistance();
+    
+    if(distance <= 10) {
+      lockState = true;
+    }
+  }
 }

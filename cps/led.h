@@ -4,21 +4,11 @@
 
 #define RED_DELAY 300
 
+// Red LED -------------------------------------------------------
 void unlockedRed() {
   if(redLedState) {
     redLedState = false;
     digitalWrite(RED_LED, LOW);
-  }
-}
-
-void unlockedYellow() {
-  static unsigned long lastToggleTime = 0;
-  int YELLOW_DELAY = (getUltrasonicDistance() + 30);
-
-  if(millis() - lastToggleTime >= YELLOW_DELAY) {
-    lastToggleTime = millis();
-    yellowLedState = !yellowLedState;
-    digitalWrite(YELLOW_LED, yellowLedState);
   }
 }
 
@@ -31,6 +21,19 @@ void lockedRed() {
     digitalWrite(RED_LED, redLedState);
   }
 }
+// ---------------------------------------------------------------
+
+// Yellow LED ----------------------------------------------------
+void unlockedYellow() {
+  static unsigned long lastToggleTime = 0;
+  int yellowDelay = (getUltrasonicDistance() + 30);
+
+  if(millis() - lastToggleTime >= yellowDelay) {
+    lastToggleTime = millis();
+    yellowLedState = !yellowLedState;
+    digitalWrite(YELLOW_LED, yellowLedState);
+  }
+}
 
 void lockedYellow() {
   static unsigned long lastToggleTime = 0;
@@ -41,8 +44,23 @@ void lockedYellow() {
     digitalWrite(YELLOW_LED, yellowLedState);
   }
 }
+// ---------------------------------------------------------------
+
+// White LED -----------------------------------------------------
+void unlockedWhite() {
+  int photoresistorValue = getLuminosity();
+  int whiteBrightness = photoresistorValue / 2;
+
+  analogWrite(WHITE_LED, whiteBrightness);
+}
+
+void lockedWhite() {
+  digitalWrite(WHITE_LED, LOW);
+}
+// ---------------------------------------------------------------
 
 void ledSetup() {
   pinMode(RED_LED, OUTPUT);
   pinMode(YELLOW_LED, OUTPUT);
+  pinMode(WHITE_LED, OUTPUT);
 }

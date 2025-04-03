@@ -17,25 +17,28 @@ void printLock() {
 
 void printUltrasonic() {
   lcd.setCursor(0, 0);
-  lcd.print(getUltrasonicDistance());
+  lcd.print("Distance");
 
-  // switch between cm and inches
+  // switch distance label between cm and inches
   if(measureState == 0) {
-    lcd.print(" cm");
+    lcd.print(" (cm):");
   } else {
-    lcd.print(" inches");
+    lcd.print(" (in):");
   }
+
+  lcd.setCursor(0, 1);
+  lcd.print(getUltrasonicDistance());
 
   // prevent errors from staying on screen
   lcd.print("          ");
 
   if(getUltrasonicDistance() < 20 && getUltrasonicDistance() > 10) {
     // warning message if distance < 20
-    lcd.setCursor(0, 1);
+    lcd.setCursor(7, 1);
     lcd.print("Careful!");
   } else {
     // no warning message otherwise
-    lcd.setCursor(0, 1);
+    lcd.setCursor(7, 1);
     lcd.print("          ");
   }
 }
@@ -45,6 +48,13 @@ void printReset() {
   lcd.print("Press * to reset");
   lcd.setCursor(0, 1);
   lcd.print("to default");
+}
+
+void printPhotoresistor() {
+  lcd.setCursor(0, 0);
+  lcd.print("Luminosity:");
+  lcd.setCursor(0, 1);
+  lcd.print(getLuminosity());
   lcd.print("          ");
 }
 
@@ -52,4 +62,18 @@ void lcdSetup() {
   lcd.init();
   lcd.backlight();
   lcd.clear();
+}
+
+void lcdLoop() {
+  switch(displayState) {
+    case 1:
+      printUltrasonic();
+      break;
+    case 2:
+      printReset();
+      break;
+    case 3:
+      printPhotoresistor();
+      break;
+  }
 }

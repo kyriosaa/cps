@@ -1,4 +1,6 @@
 #include <IRremote.h>
+#include <EEPROM.h>
+#define EEPROM_ADDRESS 500
 
 #define IR_RECEIVE      5
 #define IR_BUTTON_LEFT  8
@@ -10,6 +12,7 @@
 void irButtonRight() {
   if(millis() - lastPressTime > debounceDelay) {
     lastPressTime = millis();
+    lcd.clear();
     displayState = (displayState % 3) + 1;
   }
 }
@@ -17,6 +20,7 @@ void irButtonRight() {
 void irButtonLeft() {
   if(millis() - lastPressTime > debounceDelay) {
     lastPressTime = millis();
+    lcd.clear();
     displayState = (displayState == 1) ? 3 : displayState - 1;
   }
 }
@@ -28,9 +32,11 @@ void irButtonStar() {
       if(measureState == 0) {
         lcd.clear();
         measureState = 1;
+        EEPROM.write(EEPROM_ADDRESS, measureState);
       } else {
         lcd.clear();
         measureState = 0;
+        EEPROM.write(EEPROM_ADDRESS, measureState);
       }
     } else if(displayState == 2) {    // if we are at the reset screen, reset to cm
       measureState = 0;
@@ -53,4 +59,25 @@ void irButtonOk() {
 
 void irRemoteSetup() {
   IrReceiver.begin(IR_RECEIVE);
+}
+
+void irRemoteLoop() {
+  if(IrReceiver.decode()) {
+    IrReceiver.resume();
+
+    int command = IrReceiver.decodedIRData.command;
+    Serial.println(command);
+    
+    switch(command) {
+      case IR_BUTTON_RIGHT:
+        irButtonRight();
+        break;
+      case IR_BUTTON_LEFT:
+        irButtonLeft();
+        break;
+      case IR_BUTTON_STAR:
+        irButtonStar();
+        break;
+    }
+  }
 }
