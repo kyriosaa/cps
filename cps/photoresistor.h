@@ -11,7 +11,7 @@ int getLuminosity() {
 
   if (millis() - prevMeasure >= measureDelay) {
     prevMeasure = millis();
-    luminosityValue = analogRead(PHOTORESISTOR_PIN) - 140;    // -140 to keep value within 250 since LED values go to 255
+    luminosityValue = analogRead(PHOTORESISTOR_PIN) - 30;    // -140 to keep value within 250 since LED values go to 255
     if (luminosityValue < 0) {
       luminosityValue = 0;
     }

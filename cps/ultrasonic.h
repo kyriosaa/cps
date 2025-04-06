@@ -58,7 +58,7 @@ void ultrasonicLoop() {
     double distance = getUltrasonicDistance();
     
     // locks device when distance <=10
-    if(distance <= 10) {
+    if(distance <= LOCK_DISTANCE) {
       lockState = true;
     }
   }

@@ -36,7 +36,7 @@ void printUltrasonic() {
   // prevent errors from staying on screen
   lcd.print("          ");
 
-  if(getUltrasonicDistance() < 20 && getUltrasonicDistance() > 10) {
+  if(getUltrasonicDistance() < 10 && getUltrasonicDistance() > LOCK_DISTANCE) {
     // warning message if distance < 20
     lcd.setCursor(7, 1);
     lcd.print("Careful!");
