@@ -15,7 +15,7 @@ void printLock() {
   lcd.print("Device is locked");
 }
 
-// handles displayState == 1
+// handles displayState == 0
 // prints data from the ultrasonic sensor
 void printUltrasonic() {
   // top line prints "Distance" + the measurement unit
@@ -47,7 +47,7 @@ void printUltrasonic() {
   }
 }
 
-// handles displayState == 2
+// handles displayState == 1
 void printReset() {
   lcd.setCursor(0, 0);
   lcd.print("Press * to reset");
@@ -55,7 +55,7 @@ void printReset() {
   lcd.print("to default");
 }
 
-// handles displayState == 3
+// handles displayState == 2
 void printPhotoresistor() {
   lcd.setCursor(0, 0);
   lcd.print("Luminosity:");
@@ -72,13 +72,13 @@ void lcdSetup() {
 
 void lcdLoop() {
   switch(displayState) {
-    case 1:
+    case 0:
       printUltrasonic();
       break;
-    case 2:
+    case 1:
       printReset();
       break;
-    case 3:
+    case 2:
       printPhotoresistor();
       break;
   }

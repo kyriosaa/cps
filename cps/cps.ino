@@ -5,6 +5,7 @@
 #include "irremote.h"
 #include "button.h"
 #include "led.h"
+#include "buzzer.h"
 
 void setup() {
   Serial.begin(115200);
@@ -15,6 +16,7 @@ void setup() {
   lcdSetup();
   buttonSetup();
   ledSetup();
+  buzzerSetup();
 
   // read whether to display cm/in from EEPROM memory
   measureState = EEPROM.read(EEPROM_ADDRESS);
@@ -27,6 +29,9 @@ void loop() {
     unlockedYellow();
     unlockedWhite();
 
+    // Buzzer
+    unlockedBuzzer();
+
     // Ultrasonic Sensor 
     ultrasonicLoop();
 
@@ -35,15 +40,19 @@ void loop() {
 
     // LCD Display 
     lcdLoop();
+
   } else {
     // print lock message on LCD display
     printLock();
+
     // blinks red LED when device is locked
     lockedRed();
     // syncs yellow LED blink rate to red LED
     lockedYellow();
     // white LED turns off
     lockedWhite();
+
+    lockedBuzzer();
 
     // unlocks device if push button activates
     buttonUnlock();
