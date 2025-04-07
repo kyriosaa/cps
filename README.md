@@ -10,6 +10,7 @@
 ## Features
 
 - **Collision Prevention -** An ultrasonic sensor constantly records and updates data to check if any object gets close to the device. Once an object gets within 10 units (cm/in) of distance to the device, the device triggers a lock on all operations.
+- **Warning Buzzer -** A buzzer will beep in accordance to the distance of any object that is detected by the ultrasonic sensor.
 - **Warning LED Light -** A yellow LED will blink in accordance with the distance of any object that is detected by the ultrasonic sensor.
 - **Locked LED Light -** A red LED will blink when the device is locked due to a close object.
 
@@ -28,6 +29,7 @@
 - **Arduino Nano -** System microcontroller
 - **Ultrasonic Sensor -** Sensor to detect object distance from device
 - **Photoresistor -** Sensor to detect light levels
+- **Buzzer -** Makes a beeping noise in accordance to the object distance
 - **LEDs -** LED lights to indicate warning, locking, and light levels
 - **Push Button -** Button for manual unlocking of device
 - **16x2 LCD Display -** Displays the sensor data along with options for resetting the device
