@@ -9,7 +9,7 @@
 
 ## Features
 
-- **Collision Prevention -** An ultrasonic sensor constantly records and updates data to check if any object gets close to the device. Once an object gets within 10 units (cm/in) of distance to the device, the device triggers a lock on all operations.
+- **Collision Prevention -** An ultrasonic sensor constantly records and updates data to check if any object gets close to the device. Once an object gets within 3 units (cm/in) of distance to the device, the device triggers a lock on all operations.
 - **Warning Buzzer -** A buzzer will beep in accordance to the distance of any object that is detected by the ultrasonic sensor.
 - **Warning LED Light -** A yellow LED will blink in accordance with the distance of any object that is detected by the ultrasonic sensor.
 - **Locked LED Light -** A red LED will blink when the device is locked due to a close object.
@@ -20,9 +20,8 @@
 - **Data Display -** Data regarding the object distance and light level is shown on a 16x2 LCD screen. The unit of distance can be changed between centimeters and inches. The choice between cm/in is remembered and kept in the Arduino's EEPROM.
 - **Remote Control -** Functions of the device can be done on an IR remote controller. These functions include: 
     - Unlocking the app
-    - Switching between screens showing distance data, light level data
+    - Switching between screens showing distance data and light level data
     - Switching distance units between cm/in
-    - Resetting settings to default
 
 ## Hardware Components
 
