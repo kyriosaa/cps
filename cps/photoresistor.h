@@ -1,7 +1,7 @@
 #define PHOTORESISTOR_PIN 0
 
 unsigned long prevMeasure = millis();
-unsigned long measureDelay = 100;
+unsigned long measureDelay = 1000;
 
 // records luminosity value every 100ms
 int getLuminosity() {

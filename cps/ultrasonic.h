@@ -2,7 +2,7 @@
 #define TRIGGER_PIN 4
 
 unsigned long prevTrigger = millis();
-unsigned long triggerDelay = 60;
+unsigned long triggerDelay = 150;
 
 volatile unsigned long pulseInBegin;
 volatile unsigned long pulseInEnd;
@@ -31,6 +31,8 @@ void triggerUltrasonicSensor() {
 
 // handles calculation of the final distance value
 double getUltrasonicDistance() {
+  if(pulseInEnd <= pulseInBegin) return ultrasonicDistance; // return last valid reading
+
   double durationMicros = pulseInEnd - pulseInBegin;
   if(measureState == 0) {
     double distance = durationMicros / 58.0; // for cm
@@ -56,10 +58,15 @@ void ultrasonicLoop() {
   if(newDistanceAvailable) {
     newDistanceAvailable = false;
     double distance = getUltrasonicDistance();
-    
-    // locks device when distance <=10
-    if(distance <= LOCK_DISTANCE) {
-      lockState = true;
+
+    // clamp to realistic range
+    if (distance > 0 && distance < 1000) {
+      ultrasonicDistance = distance;
+
+      // lock condition
+      if(distance <= LOCK_DISTANCE) {
+        lockState = true;
+      }
     }
   }
 }

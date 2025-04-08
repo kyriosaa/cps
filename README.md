@@ -20,7 +20,7 @@
 - **Data Display -** Data regarding the object distance and light level is shown on a 16x2 LCD screen. The unit of distance can be changed between centimeters and inches. The choice between cm/in is remembered and kept in the Arduino's EEPROM.
 - **Remote Control -** Functions of the device can be done on an IR remote controller. These functions include: 
     - Unlocking the app
-    - Switching between screens showing distance data, light level data, and an option to reset settings to default
+    - Switching between screens showing distance data, light level data
     - Switching distance units between cm/in
     - Resetting settings to default
 

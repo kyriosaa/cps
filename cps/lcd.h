@@ -15,7 +15,7 @@ void printLock() {
   lcd.print("Device is locked");
 }
 
-// handles displayState == 0
+// handles displayState == 1
 // prints data from the ultrasonic sensor
 void printUltrasonic() {
   // top line prints "Distance" + the measurement unit
@@ -31,12 +31,12 @@ void printUltrasonic() {
 
   // bottom line prints the distance value + a warning message if distance < 10
   lcd.setCursor(0, 1);
-  lcd.print(getUltrasonicDistance());
+  lcd.print(ultrasonicDistance);
 
   // prevent errors from staying on screen
   lcd.print("          ");
 
-  if(getUltrasonicDistance() < 10 && getUltrasonicDistance() > LOCK_DISTANCE) {
+  if(ultrasonicDistance < 10 && ultrasonicDistance > LOCK_DISTANCE) {
     // warning message if distance < 20
     lcd.setCursor(7, 1);
     lcd.print("Careful!");
@@ -45,14 +45,6 @@ void printUltrasonic() {
     lcd.setCursor(7, 1);
     lcd.print("          ");
   }
-}
-
-// handles displayState == 1
-void printReset() {
-  lcd.setCursor(0, 0);
-  lcd.print("Press * to reset");
-  lcd.setCursor(0, 1);
-  lcd.print("to default");
 }
 
 // handles displayState == 2
@@ -72,11 +64,8 @@ void lcdSetup() {
 
 void lcdLoop() {
   switch(displayState) {
-    case 0:
-      printUltrasonic();
-      break;
     case 1:
-      printReset();
+      printUltrasonic();
       break;
     case 2:
       printPhotoresistor();

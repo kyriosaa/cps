@@ -4,10 +4,9 @@
 
 #define IR_RECEIVE      5
 #define IR_BUTTON_LEFT  8
-#define IR_BUTTON_RIGHT 90
+#define IR_BUTTON_RIGHT 0
 #define IR_BUTTON_OK    28
 #define IR_BUTTON_STAR  22
-#define IR_BUTTON_HASH  13  // for buzzer use later (WIP)
 
 // IR remote right button press
 // increases displayState by 1 (out of 3)
@@ -15,7 +14,7 @@ void irButtonRight() {
   if(millis() - lastPressTime > debounceDelay) {
     lastPressTime = millis();
     lcd.clear();
-    displayState = (displayState % 3) + 1;
+    displayState = (displayState % 2) + 1;
   }
 }
 
@@ -25,7 +24,7 @@ void irButtonLeft() {
   if(millis() - lastPressTime > debounceDelay) {
     lastPressTime = millis();
     lcd.clear();
-    displayState = (displayState == 1) ? 3 : displayState - 1;
+    displayState = (displayState == 1) ? 2 : displayState - 1;
   }
 }
 

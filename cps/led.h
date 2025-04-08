@@ -32,7 +32,7 @@ void lockedRed() {
 // when device is unlocked, blink yellow LED according to the distance value
 void unlockedYellow() {
   static unsigned long lastToggleTime = 0;
-  int yellowDelay = (getUltrasonicDistance() + 30);
+  int yellowDelay = (ultrasonicDistance + 30);
 
   if(millis() - lastToggleTime >= yellowDelay) {
     lastToggleTime = millis();

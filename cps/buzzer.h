@@ -2,7 +2,7 @@
 
 void unlockedBuzzer() {
   static unsigned long lastToggleTime = 0;
-  int buzzerDelay = (getUltrasonicDistance() + 30);
+  int buzzerDelay = (ultrasonicDistance + 30);
 
   if(millis() - lastToggleTime >= buzzerDelay) {
     lastToggleTime = millis();
