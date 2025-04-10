@@ -4,7 +4,7 @@
 ## About
 
 - A collision prevention system meant for vehicles and robots.
-- C++ using Arduino IDE
+- C/C++ using Arduino IDE
 
 ## Features
 
