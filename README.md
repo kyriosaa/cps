@@ -1,6 +1,8 @@
 ![alt text](https://github.com/kyriosaa/cps/blob/main/images/cps-1.JPG "CPS")
 # Collision Prevention System
 
+Video link: https://youtu.be/S9PfXs7jMV0
+
 ## About
 
 - A collision prevention system meant for vehicles and robots.
