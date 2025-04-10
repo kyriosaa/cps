@@ -1,4 +1,4 @@
-![alt text](https://github.com/kyriosaa/cps/blob/master/images/cps-1.JPG "CPS")
+![alt text](https://github.com/kyriosaa/cps/blob/main/images/cps-1.JPG "CPS")
 # Collision Prevention System
 
 ## About
@@ -33,10 +33,10 @@
 - **16x2 LCD Display -** Displays the sensor data along with options for resetting the device
 - **IR Remote & Receiver -** For long range device control
 
-![alt text](https://github.com/kyriosaa/cps/blob/master/images/cps-2.JPG "CPS")
-![alt text](https://github.com/kyriosaa/cps/blob/master/images/cps-3.JPG "CPS")
-<!-- ![alt text](https://github.com/kyriosaa/cps/blob/master/images/cps-4.JPG "CPS") -->
-![alt text](https://github.com/kyriosaa/cps/blob/master/images/cps-5.JPG "CPS")
-![alt text](https://github.com/kyriosaa/cps/blob/master/images/cps-6.JPG "CPS")
-![alt text](https://github.com/kyriosaa/cps/blob/master/images/cps-7.JPG "CPS")
-<!-- ![alt text](https://github.com/kyriosaa/cps/blob/master/images/cps-8.JPG "CPS") -->
+![alt text](https://github.com/kyriosaa/cps/blob/main/images/cps-2.JPG "CPS")
+![alt text](https://github.com/kyriosaa/cps/blob/main/images/cps-3.JPG "CPS")
+<!-- ![alt text](https://github.com/kyriosaa/cps/blob/main/images/cps-4.JPG "CPS") -->
+![alt text](https://github.com/kyriosaa/cps/blob/main/images/cps-5.JPG "CPS")
+![alt text](https://github.com/kyriosaa/cps/blob/main/images/cps-6.JPG "CPS")
+![alt text](https://github.com/kyriosaa/cps/blob/main/images/cps-7.JPG "CPS")
+<!-- ![alt text](https://github.com/kyriosaa/cps/blob/main/images/cps-8.JPG "CPS") -->
