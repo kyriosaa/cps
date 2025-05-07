@@ -2,7 +2,7 @@
 
 # Collision Prevention System
 
-Video link: https://youtu.be/S9PfXs7jMV0
+🎥 [Watch the demo video](https://youtu.be/S9PfXs7jMV0) 🎥
 
 ## About
 
