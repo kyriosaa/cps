@@ -1,11 +1,17 @@
-// global variables
+#ifndef GLOBALS_H
+#define GLOBALS_H
+
+// global constants
 #define LOCK_DISTANCE 3
+#define EEPROM_ADDRESS 0
 
-bool lockState = false;
-int displayState = 1;
-int measureState = 0;
-int buzzerState = 0;
-bool redLedState = false;
-bool yellowLedState = false;
+// global variable declarations (extern means defined elsewhere)
+extern bool lockState;
+extern int displayState;
+extern int measureState;
+extern int buzzerState;
+extern bool redLedState;
+extern bool yellowLedState;
+extern double ultrasonicDistance;
 
-double ultrasonicDistance = 1000;
+#endif

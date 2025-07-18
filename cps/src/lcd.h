@@ -1,3 +1,6 @@
+#ifndef LCD_H
+#define LCD_H
+
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
@@ -72,3 +75,5 @@ void lcdLoop() {
       break;
   }
 }
+
+#endif

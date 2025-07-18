@@ -1,3 +1,6 @@
+#ifndef BUTTON_H
+#define BUTTON_H
+
 #define BUTTON_PIN 2
 
 // allows for the device to be unlocked through the push button
@@ -11,3 +14,5 @@ void buttonUnlock() {
 void buttonSetup() {
   pinMode(BUTTON_PIN, INPUT);
 }
+
+#endif

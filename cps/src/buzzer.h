@@ -1,3 +1,6 @@
+#ifndef BUZZER_H
+#define BUZZER_H
+
 #define BUZZER_PIN 6
 
 void unlockedBuzzer() {
@@ -24,3 +27,5 @@ void lockedBuzzer() {
 void buzzerSetup() {
   pinMode(BUZZER_PIN, OUTPUT);
 }
+
+#endif

@@ -1,6 +1,7 @@
+#ifndef IRREMOTE_H
+#define IRREMOTE_H
+
 #include <IRremote.h>
-#include <EEPROM.h>
-#define EEPROM_ADDRESS 500
 
 #define IR_RECEIVE      5
 #define IR_BUTTON_LEFT  8
@@ -88,3 +89,5 @@ void irRemoteLoop() {
     }
   }
 }
+
+#endif

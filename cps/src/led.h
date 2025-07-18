@@ -1,3 +1,6 @@
+#ifndef LED_H
+#define LED_H
+
 #define RED_LED 12
 #define YELLOW_LED 11
 #define WHITE_LED 10
@@ -74,3 +77,5 @@ void ledSetup() {
   pinMode(YELLOW_LED, OUTPUT);
   pinMode(WHITE_LED, OUTPUT);
 }
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef ULTRASONIC_H
+#define ULTRASONIC_H
+
 #define ECHO_PIN 3
 #define TRIGGER_PIN 4
 
@@ -70,3 +73,5 @@ void ultrasonicLoop() {
     }
   }
 }
+
+#endif

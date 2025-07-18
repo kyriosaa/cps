@@ -1,11 +1,21 @@
 #include "globals.h"
-#include "ultrasonic.h"
-#include "photoresistor.h"
-#include "lcd.h"
-#include "irremote.h"
-#include "button.h"
-#include "led.h"
-#include "buzzer.h"
+#include "src/ultrasonic.h"
+#include "src/photoresistor.h"
+#include "src/lcd.h"
+#include "src/irremote.h"
+#include "src/button.h"
+#include "src/led.h"
+#include "src/buzzer.h"
+#include <EEPROM.h>
+
+// global variable definitions
+bool lockState = false;
+int displayState = 1;
+int measureState = 0;
+int buzzerState = 0;
+bool redLedState = false;
+bool yellowLedState = false;
+double ultrasonicDistance = 1000;
 
 void setup() {
   Serial.begin(115200);

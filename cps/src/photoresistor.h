@@ -1,3 +1,6 @@
+#ifndef PHOTORESISTOR_H
+#define PHOTORESISTOR_H
+
 #define PHOTORESISTOR_PIN 0
 
 unsigned long prevMeasure = millis();
@@ -23,3 +26,5 @@ int getLuminosity() {
 void photoresistorSetup() {
   pinMode(PHOTORESISTOR_PIN, OUTPUT);
 }
+
+#endif
