@@ -2,12 +2,13 @@
 
 # Collision Prevention System
 
-🎥 [Watch the demo video](https://youtu.be/S9PfXs7jMV0) 🎥
+[![C](https://img.shields.io/badge/C-00599C?style=flat&logo=c&logoColor=white)](https://en.cppreference.com/w/c/language.html)
+[![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=flat&logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
+[![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat&logo=arduino&logoColor=white)](https://www.arduino.cc/)
 
-## About
+An Arduino-based real-time collision prevention and environmental monitoring system designed for autonomous vehicles & robots.
 
-- A collision prevention system meant for vehicles and robots.
-- C/C++ using Arduino IDE
+🎥 [Demo video](https://youtu.be/S9PfXs7jMV0) 🎥
 
 ## Features
 
