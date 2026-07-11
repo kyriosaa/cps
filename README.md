@@ -6,7 +6,7 @@
 [![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=flat&logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
 [![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat&logo=arduino&logoColor=white)](https://www.arduino.cc/)
 
-An Arduino-based real-time collision prevention and environmental monitoring system designed for autonomous vehicles & robots.
+An Arduino-based real-time collision prevention and environmental monitoring system designed for autonomous vehicles & robots. 
 
 🎥 [Demo video](https://youtu.be/S9PfXs7jMV0) 🎥
 
